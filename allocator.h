@@ -3,6 +3,9 @@
 
 #include <stddef.h>
 
+#define CHUNK_LIST_SIZE (sizeof(struct chunk) * 1024)
+#define MIN_MAP_SIZE ((size_t)4096)
+
 void *cust_malloc(size_t size);
 void cust_free(void *ptr);
 
