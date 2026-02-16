@@ -9,11 +9,6 @@
 #define CHUNK_LIST_SIZE (sizeof(struct chunk) * 1024)
 #define MIN_MAP_SIZE ((size_t)4096)
 
-struct chunk {
-  void *ptr;
-  size_t size;
-};
-
 struct chunk *chunk_list = NULL;
 size_t chunk_list_size = 0;
 
