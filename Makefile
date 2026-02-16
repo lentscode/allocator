@@ -24,4 +24,4 @@ format: $(SOURCES) $(INCLUDES)
 .PHONY = clean
 
 clean:
-	rm -f *.o $(EXE)
+	rm -f *.o $(EXE) $(TEST_EXE)

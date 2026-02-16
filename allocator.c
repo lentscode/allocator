@@ -36,13 +36,6 @@ static int _init() {
   return 0;
 }
 
-static void _chunk_list_dump() {
-  printf("Chunk dump, size = %lu\n", chunk_list_size);
-  for (size_t i = 0; i < chunk_list_size; i++) {
-    printf("%p -> %lu\n", chunk_list[i].ptr, chunk_list[i].size);
-  }
-}
-
 static int _find_chunk(void *ptr) {
   size_t low = 0;
   size_t high = chunk_list_size - 1;
@@ -65,6 +58,8 @@ static int _find_chunk(void *ptr) {
 void *cust_malloc(size_t size) {
   if (size == 0)
     return NULL;
+	if (memory == NULL || memory_cap == 0)
+		_init();
   if (size > memory_cap)
     return NULL;
 
