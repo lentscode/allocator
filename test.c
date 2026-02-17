@@ -14,7 +14,7 @@
 
 static inline void cleanup() {
 	munmap(memory, memory_cap);
-	munmap(chunk_list, CHUNK_LIST_SIZE);
+	munmap(chunk_list, chunk_list_cap);
 	memory = NULL;
 	chunk_list = NULL;
 }
