@@ -1,4 +1,4 @@
-#include "allocator.h"
+#include "linall.h"
 
 #include <stddef.h>
 #include <stdio.h>
@@ -42,7 +42,7 @@ static int _find_chunk(void *ptr) {
   return -1;
 }
 
-void *cust_malloc(size_t size) {
+void *linall_malloc(size_t size) {
   if (size == 0) return NULL;
 
 	if (chunk_list_size >= chunk_list_cap) return NULL;
@@ -89,7 +89,7 @@ void *cust_malloc(size_t size) {
   return new_ptr;
 }
 
-void cust_free(void *ptr) {
+void linall_free(void *ptr) {
   if (ptr == NULL || memory == NULL) return;
   if (ptr < memory || ptr >= memory + memory_cap) return;
   if (chunk_list_size == 0) return;

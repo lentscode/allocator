@@ -1,8 +1,8 @@
 CC       = gcc
 CFLAGS   = -Wall -Wextra
-SRCS     = allocator.c
-INCLUDES = allocator.h
-OBJS     = allocator.o
+SRCS     = linall.c
+INCLUDES = linall.h
+OBJS     = linall.o
 
 CL_FORM       = clang-format
 CL_FORM_FLAGS = --sort-includes -Werror -i

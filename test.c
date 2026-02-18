@@ -1,5 +1,5 @@
-#define _ALLOCATOR_TEST
-#include "allocator.h"
+#define _LINALL_TEST
+#include "linall.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -23,7 +23,7 @@ void test__normal_allocation() {
 	ASSERT(memory == NULL);
 	ASSERT(chunk_list == NULL);
 
-	char *ptr = (char*)cust_malloc(1);
+	char *ptr = (char*)linall_malloc(1);
 	ASSERT(memory != NULL);
 	ASSERT(chunk_list != NULL);
 	ASSERT(ptr != NULL);
@@ -40,17 +40,17 @@ void test__multiple_allocation() {
 	void *start = NULL;
 	void *end = NULL;
 	for (size_t i = 10; i > 0; i--) {
-		void *ptr = cust_malloc(i);
+		void *ptr = linall_malloc(i);
 		if (i == 10) start = ptr;
 		if (i == 1) end = ptr;
 	}
 
 	ASSERT(end - start == 55 - 1);
 
-	cust_free(start);
+	linall_free(start);
 	ASSERT(chunk_list[0].size == 9);
 
-	cust_malloc(8);
+	linall_malloc(8);
 	ASSERT(chunk_list[0].ptr == start);
 	ASSERT(chunk_list[0].size == 8);
 	ASSERT(chunk_list[1].ptr == start + 10);
